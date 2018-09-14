@@ -51,17 +51,9 @@ class system.systemController inherits SparkEntity:
     @openapi.openedge.export(type="REST", useReturnValue="false", writeDataSetBeforeImage="true").
     @progress.service.resourceMapping(type="REST", operation="invoke", URI="/update", alias="update", mediaType="application/json").
     method public void UpdateSystem(input dataset dsSystem):    
-                                        
-        /*        input pcSystem as character,    */
-        /*        input pcLocSrcPath as character,*/
-        /*        input pcSysPropath as character,*/
-        /*        input pcSysDbParam as character,*/
-        /*        input entryPoints as character, */
-        /*        input pcSysLoc as character     */
-        
         define variable systemService as class SystemService no-undo.
         systemService = new SystemService().
-        systemService:updateSystem(dataset dsSystem).
+        systemService:updateSystem(dataset dsSystem by-reference).
     end method.
     
     /* Systems list */

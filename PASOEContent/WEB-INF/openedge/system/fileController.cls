@@ -65,7 +65,9 @@ class system.fileController inherits SparkEntity:
 
     /*------------------------------------------------------------------------------
             Purpose:  Get short information of file usage by type:                                                                         
-            Notes:                                                                        
+            Notes:
+            Parameters:
+            @param pcSystem Target System name
     ------------------------------------------------------------------------------*/
     @openapi.openedge.export(type="REST", useReturnValue="false", writeDataSetBeforeImage="true").
     @progress.service.resourceMapping(type="REST", operation="invoke", URI="/getFile", alias="getFile", mediaType="application/json"). 
