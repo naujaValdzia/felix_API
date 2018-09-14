@@ -1,0 +1,80 @@
+info: TCManager 2.1.4
+info: executing create Tomcat instance command
+info: creating new server instance at: C:\PASOE\felix_API
+info: creating instance directory structure: C:\PASOE\felix_API
+info: populating CATALINA_HOME files into instance directory structure: C:\PASOE\felix_API
+info: copying CATALINA_HOME ROOT application into instance directory structure
+info: copying CATALINA_HOME web application archives into instance directory structure
+info: copying CATALINA_HOME conf files into instance directory structure
+info: copying CATALINA_HOME bin files into instance directory structure
+info: copying CATALINA_HOME bin\*_tlr tailoring files into instance directory structure
+info: copying CATALINA_HOME bin\*_setenv files into instance directory structure
+info: copying CATALINA_HOME bin\*_startup files into instance directory structure
+info: copying CATALINA_HOME bin\*_shutdown files into instance directory structure
+info: executing CATALINA_HOME product specific scripts
+info: executing oe_manager create
+info: executing create instance command
+info: verifying source PASOE bin files 
+info: copying PASOE bin files into directory structure
+info: cpyfile: C:\PASOE\felix_API\bin\deployREST.sh
+info: cpyfile: C:\PASOE\felix_API\bin\deploySOAP.sh
+info: cpyfile: C:\PASOE\felix_API\bin\oeprop.sh
+info: cpyfile: C:\PASOE\felix_API\bin\deploysvc.sh
+info: cpyfile: C:\PASOE\felix_API\bin\oeabl_tlr.sh
+info: cpyfile: C:\PASOE\felix_API\bin\wscgi_tlr.sh
+info: cpyfile: C:\PASOE\felix_API\bin\oeproxy_tlr.sh
+info: cpyfile: C:\PASOE\felix_API\bin\oests_tlr.sh
+info: cpyfile: C:\PASOE\felix_API\bin\oedbg_tlr.sh
+info: cpyfile: C:\PASOE\felix_API\bin\oejmx.sh
+info: cpyfile: C:\PASOE\felix_API\bin\oewatcher.sh
+info: copying PASOE jmxqueries  directory
+info: updating CATALINA_BASE in instance directory bin files
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\deployREST.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\deploySOAP.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\deploysvc.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\oeprop.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\openedge_setenv.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\oewatcher.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\oejmx.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in instance directory tlr files
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\oeabl_tlr.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\wscgi_tlr.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\oeproxy_tlr.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\oests_tlr.bat to C:\PASOE\felix_API
+info: updating CATALINA_BASE in C:\PASOE\felix_API\bin\oedbg_tlr.bat to C:\PASOE\felix_API
+info: copying CATALINA_HOME openedge folders into instance directory structure
+info: running oeabl tailoring script
+info: begin tailoring ABL for the Progress Application Server
+info: creating instance with application name felix_API
+info: Creating context.xml for context name ROOT
+info: adding properties to openedge.properties for ABL instance felix_API
+info: setting application to felix_API in openedge.properties
+info: adding ROOT to webapps in openedge.properties
+info: security model is developer
+info: enabling server status pages for development server
+info: setting intitial sessions to 2 for development server
+info: enabling APSV transport for development server
+info: enabling SOAP transport for development server
+info: enabling REST transport for development server
+info: enabling WEB transport for development server
+info: setting default WEB handler to OpenEdge.Web.CompatibilityHandler
+info: updating PROPATH with webapp directory
+info: updated PROPATH to ${CATALINA_BASE}/webapps/ROOT/WEB-INF/openedge,${CATALINA_BASE}/openedge,${DLC}/tty,${DLC}/tty/netlib/OpenEdge.Net.pl
+info: creating welcome page
+info: using static/ServerStatus.html as welcome page static/index.html
+info: creating symbolic links for oeprop.bat
+info: created symbolic link oepropCmd.bat
+info: creating symbolic links for deploysvc.bat
+info: created symbolic link deploysvcCmd.bat
+info: Created folder C:\PASOE\felix_API\ablapps\felix_API\conf
+info: Copying oeabl security properties file to C:\PASOE\felix_API\ablapps\felix_API\conf
+info: updating CATALINA_BASE in instance directory bin files
+info: updating CATALINA_TMPDIR in instance directory bin files
+info: tailoring instance directory properties
+info: add instance list - felix_API C:\PASOE\felix_API 
+info: turning off StuckSessionValve for development server
+info: executing 'feature' command
+info: turn feature off
+
+server instance felix_API created at C:\PASOE\felix_API
+done - complete any manual edits at this time.

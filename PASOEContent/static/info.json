@@ -1,0 +1,363 @@
+{
+    "version": "1.5",
+    "lastModified": "Wed Sep 05 09:59:12 EEST 2018",
+    "services": [{
+        "name": "info",
+        "address": "\/web\/pdo\/info",
+        "useRequest": true,
+        "resources": [
+            {
+                "name": "errorList",
+                "path": "\/errorList",
+                "autoSave": true,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dserror": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"tterror": {
+                            "type": "array",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "_errorString": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "filePath": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "filePath"
+                                    },
+                                    "systemName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemName"
+                                    },
+                                    "errorMessage": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "errorMessage"
+                                    },
+                                    "id": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "id"
+                                    },
+                                    "seq": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": null,
+                                        "title": "seq"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [{
+                    "path": "?filter={filter}",
+                    "useBeforeImage": true,
+                    "type": "read",
+                    "verb": "get",
+                    "mappingType": "AFP",
+                    "capabilities": "filter,top,skip,id,sort,orderBy",
+                    "params": [
+                        {
+                            "name": "filter",
+                            "type": "QUERY"
+                        },
+                        {
+                            "name": "dserror",
+                            "type": "RESPONSE_BODY"
+                        }
+                    ]
+                }]
+            },
+            {
+                "name": "systemList",
+                "path": "\/systemList",
+                "autoSave": true,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dssystem": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"ttsystem": {
+                            "type": "array",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "_errorString": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "systemName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemName"
+                                    },
+                                    "localSourcePath": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "localSourcePath"
+                                    },
+                                    "systemPropath": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemPropath"
+                                    },
+                                    "systemDBparameters": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemDBparameters"
+                                    },
+                                    "entryPoints": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "entryPoints"
+                                    },
+                                    "hasErrors": {
+                                        "type": "boolean",
+                                        "ablType": "LOGICAL",
+                                        "default": false,
+                                        "title": "hasErrors"
+                                    },
+                                    "systemLocation": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemLocation"
+                                    },
+                                    "id": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "id"
+                                    },
+                                    "seq": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": null,
+                                        "title": "seq"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [
+                    {
+                        "path": "\/delete",
+                        "useBeforeImage": true,
+                        "type": "delete",
+                        "verb": "delete",
+                        "mappingType": "AFP",
+                        "capabilities": "filter,top,skip,id,sort,orderBy",
+                        "params": [
+                            {
+                                "name": "dssystem",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dssystem",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "\/create",
+                        "useBeforeImage": true,
+                        "type": "create",
+                        "verb": "post",
+                        "mappingType": "AFP",
+                        "capabilities": "filter,top,skip,id,sort,orderBy",
+                        "params": [
+                            {
+                                "name": "dssystem",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dssystem",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "\/update",
+                        "useBeforeImage": true,
+                        "type": "update",
+                        "verb": "put",
+                        "mappingType": "AFP",
+                        "capabilities": "filter,top,skip,id,sort,orderBy",
+                        "params": [
+                            {
+                                "name": "dssystem",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dssystem",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "?filter={filter}",
+                        "useBeforeImage": true,
+                        "type": "read",
+                        "verb": "get",
+                        "mappingType": "AFP",
+                        "capabilities": "filter,top,skip,id,sort,orderBy",
+                        "params": [
+                            {
+                                "name": "filter",
+                                "type": "QUERY"
+                            },
+                            {
+                                "name": "dssystem",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "asdasd",
+                "path": "\/asdasd",
+                "autoSave": false,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dsasdasd": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"easdasd": {
+                            "type": "array",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "_errorString": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "asdasdField": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "asdasdField"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [
+                    {
+                        "path": "?filter={filter}",
+                        "useBeforeImage": true,
+                        "type": "read",
+                        "verb": "get",
+                        "params": [
+                            {
+                                "name": "filter",
+                                "type": "QUERY"
+                            },
+                            {
+                                "name": "dsasdasd",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "delete",
+                        "verb": "delete",
+                        "params": [
+                            {
+                                "name": "dsasdasd",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsasdasd",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "update",
+                        "verb": "put",
+                        "params": [
+                            {
+                                "name": "dsasdasd",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsasdasd",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "create",
+                        "verb": "post",
+                        "params": [
+                            {
+                                "name": "dsasdasd",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsasdasd",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Submitasdasd",
+                        "path": "\/Submitasdasd",
+                        "useBeforeImage": true,
+                        "type": "submit",
+                        "verb": "put",
+                        "params": [
+                            {
+                                "name": "dsasdasd",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsasdasd",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }]
+}

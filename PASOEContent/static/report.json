@@ -1,0 +1,615 @@
+{
+    "version": "1.5",
+    "lastModified": "Wed Sep 05 13:24:33 EEST 2018",
+    "services": [{
+        "name": "report",
+        "address": "\/web\/pdo\/report",
+        "useRequest": true,
+        "resources": [
+            {
+                "name": "unused",
+                "path": "\/unused",
+                "autoSave": true,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dsunused": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"ttunused": {
+                            "type": "array",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "_errorString": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "fileName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "fileName"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "type"
+                                    },
+                                    "compileUnit": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "compileUnit"
+                                    },
+                                    "systemName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemName"
+                                    },
+                                    "info": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "info"
+                                    },
+                                    "id": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "id"
+                                    },
+                                    "seq": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": null,
+                                        "title": "seq"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [{
+                    "path": "?filter={filter}",
+                    "useBeforeImage": true,
+                    "type": "read",
+                    "verb": "get",
+                    "mappingType": "AFP",
+                    "capabilities": "filter,top,skip,id,sort,orderBy",
+                    "params": [
+                        {
+                            "name": "filter",
+                            "type": "QUERY"
+                        },
+                        {
+                            "name": "dsunused",
+                            "type": "RESPONSE_BODY"
+                        }
+                    ]
+                }]
+            },
+            {
+                "name": "file",
+                "path": "\/file",
+                "autoSave": true,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dsfile": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"ttfile": {
+                            "type": "array",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "_errorString": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "fileNum": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "fileNum"
+                                    },
+                                    "fileName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "fileName"
+                                    },
+                                    "sourceName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "sourceName"
+                                    },
+                                    "sourcePath": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "sourcePath"
+                                    },
+                                    "line": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "line"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "type"
+                                    },
+                                    "info": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "info"
+                                    },
+                                    "compileUnit": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "compileUnit"
+                                    },
+                                    "systemName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemName"
+                                    },
+                                    "id": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "id"
+                                    },
+                                    "seq": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": null,
+                                        "title": "seq"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [{
+                    "path": "?filter={filter}",
+                    "useBeforeImage": true,
+                    "type": "read",
+                    "verb": "get",
+                    "mappingType": "AFP",
+                    "capabilities": "filter,top,skip,id,sort,orderBy",
+                    "params": [
+                        {
+                            "name": "filter",
+                            "type": "QUERY"
+                        },
+                        {
+                            "name": "dsfile",
+                            "type": "RESPONSE_BODY"
+                        }
+                    ]
+                }]
+            },
+            {
+                "name": "dbField",
+                "path": "\/dbField",
+                "autoSave": true,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dsfielddb": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"ttfielddb": {
+                            "type": "array",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "_errorString": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "fieldNum": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "fieldNum"
+                                    },
+                                    "sourceName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "sourceName"
+                                    },
+                                    "sourcePath": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "sourcePath"
+                                    },
+                                    "line": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "line"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "type"
+                                    },
+                                    "information": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "information"
+                                    },
+                                    "compileUnit": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "compileUnit"
+                                    },
+                                    "systemName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemName"
+                                    },
+                                    "fileName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "fileName"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [{
+                    "path": "?filter={filter}",
+                    "useBeforeImage": true,
+                    "type": "read",
+                    "verb": "get",
+                    "mappingType": "AFP",
+                    "capabilities": "filter,top,skip,id,sort,orderBy",
+                    "params": [
+                        {
+                            "name": "filter",
+                            "type": "QUERY"
+                        },
+                        {
+                            "name": "dsfielddb",
+                            "type": "RESPONSE_BODY"
+                        }
+                    ]
+                }]
+            },
+            {
+                "name": "treeView",
+                "path": "\/treeView",
+                "autoSave": true,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dsfile": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"ttfile": {
+                            "type": "array",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "_errorString": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "fileNum": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "fileNum"
+                                    },
+                                    "fileName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "fileName"
+                                    },
+                                    "sourceName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "sourceName"
+                                    },
+                                    "sourcePath": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "sourcePath"
+                                    },
+                                    "line": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "line"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "type"
+                                    },
+                                    "info": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "info"
+                                    },
+                                    "compileUnit": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "compileUnit"
+                                    },
+                                    "systemName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemName"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [
+                    {
+                        "path": "?filter={filter}",
+                        "useBeforeImage": true,
+                        "type": "read",
+                        "verb": "get",
+                        "params": [
+                            {
+                                "name": "filter",
+                                "type": "QUERY"
+                            },
+                            {
+                                "name": "dsfile",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "getIsUsedTree",
+                        "path": "\/getIsUsedTree",
+                        "useBeforeImage": true,
+                        "type": "invoke",
+                        "verb": "put",
+                        "params": [{
+                            "name": "dsfile",
+                            "type": "RESPONSE_BODY"
+                        }]
+                    },
+                    {
+                        "name": "getUsedByTree",
+                        "path": "\/getUsedByTree",
+                        "useBeforeImage": true,
+                        "type": "invoke",
+                        "verb": "put",
+                        "params": [
+                            {
+                                "name": "pcSystem",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "pcFileName",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsfile",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "TreeBE",
+                "path": "\/tree",
+                "autoSave": false,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dsfile": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"ttfile": {
+                            "type": "array",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "_errorString": {
+                                        "type": "string",
+                                        "semanticType": "Internal"
+                                    },
+                                    "fileNum": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "fileNum"
+                                    },
+                                    "fileName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "fileName"
+                                    },
+                                    "sourceName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "sourceName"
+                                    },
+                                    "sourcePath": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "sourcePath"
+                                    },
+                                    "line": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "line"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "type"
+                                    },
+                                    "info": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "info"
+                                    },
+                                    "compileUnit": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "compileUnit"
+                                    },
+                                    "systemName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "systemName"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [
+                    {
+                        "name": "SubmitTreeBE",
+                        "path": "\/SubmitTreeBE",
+                        "useBeforeImage": true,
+                        "type": "submit",
+                        "verb": "put",
+                        "params": [
+                            {
+                                "name": "dsfile",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsfile",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "?filter={filter}",
+                        "useBeforeImage": true,
+                        "type": "read",
+                        "verb": "get",
+                        "mappingType": "AFP",
+                        "capabilities": "filter,top,skip,id,sort,orderBy",
+                        "params": [
+                            {
+                                "name": "filter",
+                                "type": "QUERY"
+                            },
+                            {
+                                "name": "dsfile",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "create",
+                        "verb": "post",
+                        "params": [
+                            {
+                                "name": "dsfile",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsfile",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "update",
+                        "verb": "put",
+                        "params": [
+                            {
+                                "name": "dsfile",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsfile",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "delete",
+                        "verb": "delete",
+                        "params": [
+                            {
+                                "name": "dsfile",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "dsfile",
+                                "type": "RESPONSE_BODY"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }]
+}
