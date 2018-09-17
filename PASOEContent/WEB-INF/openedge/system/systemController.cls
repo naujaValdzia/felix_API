@@ -28,10 +28,12 @@ class system.systemController inherits SparkEntity:
     
     @openapi.openedge.export(type="REST", useReturnValue="false", writeDataSetBeforeImage="true").
     @progress.service.resourceMapping(type="REST", operation="invoke", URI="/create", alias="create", mediaType="application/json").
-    method public void CreateSystem(input dataset dsSystem):    
+    method public void CreateSystem(input dataset dsSystem, 
+                                    output vSuccess as logical, 
+                                    output vMessage as character):    
         define variable systemService as class SystemService no-undo.
         systemService = new SystemService().
-        systemService:createSystem(dataset dsSystem).
+        systemService:createSystem(dataset dsSystem, output vSuccess, output vMessage).
     end method. 
     
     /*------------------------------------------------------------------------------
@@ -40,27 +42,31 @@ class system.systemController inherits SparkEntity:
     ------------------------------------------------------------------------------*/
     @openapi.openedge.export(type="REST", useReturnValue="false", writeDataSetBeforeImage="true").
     @progress.service.resourceMapping(type="REST", operation="invoke", URI="/delete", alias="delete", mediaType="application/json").
-    method public void DeleteSystem(input pcSystem as character):                    
+    method public void DeleteSystem(input pcSystem as character,
+                                    output vSuccess as logical,
+                                    output vMessage as character):                    
         define variable systemService as class SystemService no-undo.
         systemService = new SystemService().
-        systemService:deleteSystem(pcSystem).
+        systemService:deleteSystem(pcSystem, output vSuccess, output vMessage).
     end method.
     
     /*  System update */
     
     @openapi.openedge.export(type="REST", useReturnValue="false", writeDataSetBeforeImage="true").
     @progress.service.resourceMapping(type="REST", operation="invoke", URI="/update", alias="update", mediaType="application/json").
-    method public void UpdateSystem(input dataset dsSystem):    
+    method public void UpdateSystem(input dataset dsSystem,
+                                    output vSuccess as logical,
+                                    output vMessage as character):    
         define variable systemService as class SystemService no-undo.
         systemService = new SystemService().
-        systemService:updateSystem(dataset dsSystem by-reference).
+        systemService:updateSystem(dataset dsSystem by-reference, output vSuccess, output vMessage).
     end method.
     
     /* Systems list */
     
     @openapi.openedge.export(type="REST", useReturnValue="false", writeDataSetBeforeImage="true").
     @progress.service.resourceMapping(type="REST", operation="invoke", URI="/list", alias="list", mediaType="application/json").
-    method public void systemList(output dataset dsSystem):                    
+    method public void systemList(output dataset dsSystem):    
         define variable systemService as class SystemService no-undo.
         systemService = new SystemService().
         systemService:systemList(output dataset dsSystem).
