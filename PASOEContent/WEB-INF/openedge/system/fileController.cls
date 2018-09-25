@@ -1,32 +1,31 @@
  
  /*------------------------------------------------------------------------
-    File        : fileController
-    Syntax      : 
-    Author(s)   : ppacevicius
-    Created     : Wed Sep 05 15:21:30 EEST 2018
+    File        : FileController
     Notes       : 
   ----------------------------------------------------------------------*/
   
-@program FILE(name="fileController.cls", module="AppServer").
+@program FILE(name="FileController.cls", module="AppServer").
 @openapi.openedge.export FILE(type="REST", executionMode="singleton", useReturnValue="false", writeDataSetBeforeImage="false").
-@progress.service.resource FILE(name="fileController", URI="/file", schemaName="dsfile", schemaFile="felix_shared/system/i/ds/dsFile.i").
+@progress.service.resource FILE(name="FileController", URI="/file", schemaName="dsFile", schemaFile="felix_shared/system/i/ds/dsFile.i").
 
 using Progress.Lang.*.
 using Spark.Core.Service.SparkEntity.
-
 block-level on error undo, throw.
 
-class system.fileController inherits SparkEntity:
+class system.FileController inherits SparkEntity:
 
-    {ds/dsfile.i}
-    {ds/dstree.i}
-    {ds/dsFileFiltered.i}
+    {ds/dsFile.i}
+    {ds/dsTree.i}
+    {ds/dsFileDto.i}
+    define variable fileService as class FileService no-undo.
+    define variable treeDTO as class TreeDTO no-undo.
 
-
-    constructor public fileController():
-
+    constructor public FileController ():
+        fileService = new FileService().
+        treeDTO = new TreeDTO().
     end constructor.
-    
+
+
     /*------------------------------------------------------------------------------
             Purpose:  Get information of item usage: isUsing                                                                     
             Notes:                                                                        
@@ -36,13 +35,8 @@ class system.fileController inherits SparkEntity:
     method public void getIsUsingBranch(input pcSystem as character,
                                         input pcFileName as character,
                                         output dataset dsTree):
-                
-        define variable fileService as class FileService no-undo.
-        define variable treeDTO as class TreeDTO no-undo.
-        fileService = new FileService().
         fileService:listIsUsing(pcFileName, pcSystem, output dataset dsFile by-reference).
-        treeDTO = new TreeDTO().
-        treeDTO:fromDomain(dataset dsfile, output dataset dstree by-reference).
+        treeDTO:fromDomain(dataset dsFile, output dataset dsTree by-reference).
     end method.
 
     /*------------------------------------------------------------------------------
@@ -54,13 +48,8 @@ class system.fileController inherits SparkEntity:
     method public void getUsedByBranch(input pcSystem as character,
                                        input pcFileName as character,
                                        output dataset dsTree):
-                
-        define variable fileService as class FileService no-undo.
-        define variable treeDTO as class TreeDTO no-undo.
-        fileService = new FileService().
         fileService:listUsedBy(pcFileName, pcSystem, output dataset dsFile by-reference).
-        treeDTO = new TreeDTO().
-        treeDTO:fromDomain(dataset dsfile, output dataset dstree by-reference).
+        treeDTO:fromDomain(dataset dsFile, output dataset dsTree by-reference).
     end method.
 
     /*------------------------------------------------------------------------------
@@ -74,17 +63,8 @@ class system.fileController inherits SparkEntity:
     method public void getFile(input pcSystem as character,
                                input pcFileName as character,
                                input pcType as character,
-                               output dataset dsFileFiltered):
-            
-        define variable fileService as class FileService no-undo.
-        fileService = new FileService().
-        
-        case pcType:
-            when "PROCEDURE" then fileService:findProcedure(pcFileName, pcSystem, output dataset dsFileFiltered by-reference).
-            when "CLASS" then fileService:findClass(pcFileName, pcSystem, output dataset dsFileFiltered by-reference).
-            when "INCLUDE" then fileService:findInclude(pcFileName, pcSystem, output dataset dsFileFiltered by-reference).
-            when "ALL" then fileService:findAllFiles(pcFileName, pcSystem, output dataset dsFileFiltered by-reference).
-        end case.
+                               output dataset dsFileDto):
+        fileService:listFiles(pcSystem, pcFileName, pcType, output dataset dsFileDto).
     end method.
 
     /*------------------------------------------------------------------------------
@@ -98,14 +78,6 @@ class system.fileController inherits SparkEntity:
                                      input pcType as character,
                                      input pcFileName as character,
                                      output dataset dsFile):
-            
-        define variable fileService as class FileService no-undo.
-        fileService = new FileService().
-        case pcType:
-            when "PROCEDURE" then fileService:findProcedureDetails(pcCompileUnit, pcFileName, pcSystem, output dataset dsFile by-reference).
-            when "CLASS" then fileService:findClassDetails(pcCompileUnit, pcFileName, pcSystem, output dataset dsFile by-reference).
-            when "INCLUDE" then fileService:findIncludeDetails(pcCompileUnit, pcFileName, pcSystem, output dataset dsFile by-reference).
-            when "ALL" then fileService:findAllFilesDetails(pcCompileUnit, pcFileName, pcSystem, output dataset dsFile by-reference).
-        end case.
+        fileService:listFileDetails(pcCompileUnit, pcSystem, pcFileName, pcType, output dataset dsFile).
     end method.
 end class.
