@@ -16,10 +16,14 @@ class system.DbFieldController inherits SparkEntity:
     
     {ds/dsDbField.i}
     {ds/dsDbFieldDto.i}
+    {ds/dsDbFieldDetailDto.i}
+    
     define variable dbFieldService as class DbFieldService no-undo.
+    define variable dbFieldDTO as class DbFieldDTO no-undo.
     
     constructor public DbFieldController ():
         dbFieldService = new DbFieldService().
+        dbFieldDTO = new DbFieldDTO().
     end constructor.
    
     /*------------------------------------------------------------------------------
@@ -33,7 +37,8 @@ class system.DbFieldController inherits SparkEntity:
                                   input pcDbFieldName as character,
                                   input pcType as character,
                                   output dataset dsDbFieldDto):
-        dbFieldService:getDbFields(pcDbFieldName, pcSystem, pcType, output dataset dsDbFieldDto by-reference).
+        dbFieldService:getDbFields(pcDbFieldName, pcSystem, pcType, output dataset dsDbField by-reference).
+        dbFieldDTO:fromDomain(dataset dsDbField, output dataset dsDbFieldDto).
     end method.
 
     /*------------------------------------------------------------------------------
@@ -47,7 +52,8 @@ class system.DbFieldController inherits SparkEntity:
                                         input pcSystem as character,
                                         input pcDbFieldName as character,
                                         input pcType as character,
-                                        output dataset dsDbField):
+                                        output dataset dsDbFieldDetailDto):
         dbFieldService:getDbFieldDetails(pcCompileUnit, pcDbFieldName, pcSystem, pcType, output dataset dsDbField by-reference).
+        dbFieldDTO:fromDomainDetail(dataset dsDbField, output dataset dsDbFieldDetailDto).
     end method.
 end class.

@@ -17,12 +17,16 @@ class system.FileController inherits SparkEntity:
     {ds/dsFile.i}
     {ds/dsTree.i}
     {ds/dsFileDto.i}
+    {ds/dsFileDetailDto.i}
+    
     define variable fileService as class FileService no-undo.
     define variable treeDTO as class TreeDTO no-undo.
+    define variable fileDTO as class FileDTO no-undo.
 
     constructor public FileController ():
         fileService = new FileService().
         treeDTO = new TreeDTO().
+        fileDTO = new FileDTO().
     end constructor.
 
 
@@ -64,7 +68,8 @@ class system.FileController inherits SparkEntity:
                                input pcFileName as character,
                                input pcType as character,
                                output dataset dsFileDto):
-        fileService:listFiles(pcSystem, pcFileName, pcType, output dataset dsFileDto).
+        fileService:listFiles(pcSystem, pcFileName, pcType, output dataset dsFile).
+        fileDTO:fromDomain(dataset dsFile, output dataset dsFileDto).
     end method.
 
     /*------------------------------------------------------------------------------
@@ -77,7 +82,8 @@ class system.FileController inherits SparkEntity:
                                      input pcSystem as character,
                                      input pcType as character,
                                      input pcFileName as character,
-                                     output dataset dsFile):
+                                     output dataset dsFileDetailDto):
         fileService:listFileDetails(pcCompileUnit, pcSystem, pcFileName, pcType, output dataset dsFile).
+        fileDTO:fromDomainDetail(dataset dsFile, output dataset dsFileDetailDto).
     end method.
 end class.
